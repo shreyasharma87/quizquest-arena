@@ -1,0 +1,8 @@
+{
+  "name": "quizquest-arena-root",
+  "scripts": {
+    "make-public": "node make-public.js",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev"
+  }
+}
