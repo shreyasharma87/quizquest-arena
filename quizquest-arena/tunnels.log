@@ -1,0 +1,62 @@
+[2026-05-18T09:25:12.299Z] [Backend Server STDOUT] 
+> quizquest-backend@1.0.0 dev
+> nodemon src/server.ts
+
+[2026-05-18T09:25:12.828Z] [Backend Server STDOUT] [nodemon] 3.1.14
+[2026-05-18T09:25:12.828Z] [Backend Server STDOUT] [nodemon] to restart at any time, enter `rs`
+[2026-05-18T09:25:12.829Z] [Backend Server STDOUT] [nodemon] watching path(s): *.*
+[2026-05-18T09:25:12.829Z] [Backend Server STDOUT] [nodemon] watching extensions: ts,json
+[2026-05-18T09:25:12.829Z] [Backend Server STDOUT] [nodemon] starting `ts-node src/server.ts`
+[2026-05-18T09:25:14.656Z] [Backend Tunnel STDERR] 2026-05-18T09:25:14Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps
+2026-05-18T09:25:14Z INF Requesting new quick Tunnel on trycloudflare.com...
+[2026-05-18T09:25:16.000Z] [Backend Server STDOUT] [ARENA ENGINE] Server blazing on port 3000
+[2026-05-18T09:25:20.212Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF +--------------------------------------------------------------------------------------------+
+2026-05-18T09:25:20Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+2026-05-18T09:25:20Z INF |  https://cardiovascular-protected-superior-takes.trycloudflare.com                         |
+[2026-05-18T09:25:20.242Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF +--------------------------------------------------------------------------------------------+
+2026-05-18T09:25:20Z INF Cannot determine default configuration path. No file [config.yml config.yaml] in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp]
+2026-05-18T09:25:20Z INF Version 2026.5.0 (Checksum f141cded099c239171ad2cea6fb5da0fdaa2bd36104c3074d883f9546519eba7)
+2026-05-18T09:25:20Z INF GOOS: windows, GOVersion: go1.26.2, GoArch: amd64
+2026-05-18T09:25:20Z INF Settings: map[ha-connections:1 protocol:quic url:http://localhost:3000]
+2026-05-18T09:25:20Z INF cloudflared will not automatically update on Windows systems.
+[2026-05-18T09:25:20.257Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF Generated Connector ID: f5e873ec-e675-4f28-9e0f-cfecabb2284b
+[2026-05-18T09:25:20.289Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF Initial protocol quic
+[2026-05-18T09:25:20.290Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF ICMP proxy will use 192.168.31.180 as source for IPv4
+[2026-05-18T09:25:20.322Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF ICMP proxy will use 2409:40d7:57:d40b:7dd5:63ac:255a:b096 in zone Wi-Fi as source for IPv6
+[2026-05-18T09:25:20.405Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF cloudflared does not support loading the system root certificate pool on Windows. Please use --origin-ca-pool <PATH> to specify the path to the certificate pool
+[2026-05-18T09:25:20.407Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF ICMP proxy will use 192.168.31.180 as source for IPv4
+[2026-05-18T09:25:20.410Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=0 event=0 ip=2606:4700:a0::10
+[2026-05-18T09:25:20.463Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF ICMP proxy will use 2409:40d7:57:d40b:7dd5:63ac:255a:b096 in zone Wi-Fi as source for IPv6
+[2026-05-18T09:25:20.464Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF Starting metrics server on 127.0.0.1:20241/metrics
+[2026-05-18T09:25:20.852Z] [Backend Tunnel STDERR] 2026-05-18T09:25:20Z INF Registered tunnel connection connIndex=0 connection=c757e0c0-708c-48fc-863e-167391a95fcf event=0 ip=2606:4700:a0::10 location=del02 protocol=quic
+[2026-05-18T09:25:21.783Z] [Frontend Server STDOUT] 
+> quizquest-frontend@0.0.0 dev
+> vite
+
+[2026-05-18T09:25:22.902Z] [Frontend Server STDOUT] 
+  VITE v5.4.21  ready in 882 ms
+
+[2026-05-18T09:25:22.902Z] [Frontend Server STDOUT]   ➜  Local:   http://localhost:5173/
+[2026-05-18T09:25:22.903Z] [Frontend Server STDOUT]   ➜  Network: http://192.168.31.180:5173/
+[2026-05-18T09:25:23.857Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:23Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps
+2026-05-18T09:25:23Z INF Requesting new quick Tunnel on trycloudflare.com...
+[2026-05-18T09:25:28.538Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:28Z INF +--------------------------------------------------------------------------------------------+
+2026-05-18T09:25:28Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+2026-05-18T09:25:28Z INF |  https://marco-applies-lisa-cashiers.trycloudflare.com                                     |
+2026-05-18T09:25:28Z INF +--------------------------------------------------------------------------------------------+
+[2026-05-18T09:25:28.540Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:28Z INF Cannot determine default configuration path. No file [config.yml config.yaml] in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp]
+2026-05-18T09:25:28Z INF Version 2026.5.0 (Checksum f141cded099c239171ad2cea6fb5da0fdaa2bd36104c3074d883f9546519eba7)
+2026-05-18T09:25:28Z INF GOOS: windows, GOVersion: go1.26.2, GoArch: amd64
+2026-05-18T09:25:28Z INF Settings: map[ha-connections:1 protocol:quic url:http://localhost:5173]
+2026-05-18T09:25:28Z INF cloudflared will not automatically update on Windows systems.
+[2026-05-18T09:25:28.550Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:28Z INF Generated Connector ID: 4db0c0ee-dd72-4aa4-98c9-95c20e8a486d
+[2026-05-18T09:25:28.553Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:28Z INF Initial protocol quic
+[2026-05-18T09:25:28.554Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:28Z INF ICMP proxy will use 192.168.31.180 as source for IPv4
+[2026-05-18T09:25:28.571Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:28Z INF ICMP proxy will use 2409:40d7:57:d40b:7dd5:63ac:255a:b096 in zone Wi-Fi as source for IPv6
+[2026-05-18T09:25:29.390Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:29Z INF cloudflared does not support loading the system root certificate pool on Windows. Please use --origin-ca-pool <PATH> to specify the path to the certificate pool
+[2026-05-18T09:25:29.394Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:29Z INF ICMP proxy will use 192.168.31.180 as source for IPv4
+[2026-05-18T09:25:29.397Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:29Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=0 event=0 ip=2606:4700:a8::9
+[2026-05-18T09:25:29.418Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:29Z INF ICMP proxy will use 2409:40d7:57:d40b:7dd5:63ac:255a:b096 in zone Wi-Fi as source for IPv6
+[2026-05-18T09:25:29.419Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:29Z INF Starting metrics server on 127.0.0.1:20242/metrics
+[2026-05-18T09:25:29.827Z] [Frontend Tunnel STDERR] 2026-05-18T09:25:29Z INF Registered tunnel connection connIndex=0 connection=059be601-494f-44cd-bbff-962f2d0546c0 event=0 ip=2606:4700:a8::9 location=del05 protocol=quic
+[2026-05-18T09:31:52.991Z] [Frontend Tunnel STDERR] 2026/05/18 15:01:52 Unsolicited response received on idle HTTP channel starting with "HTTP/1.1 400 Bad Request\r\n\r\n"; err=<nil>
