@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { io, Socket } from 'socket.io-client';
 import { Player, Room, ActivityLog, Question, PowerupType, RoomSettings, MatchRecord } from '../../../shared/types';
+import { API_URL } from '../config/api';
 
 interface AppState {
   socket: Socket | null;
@@ -44,9 +45,7 @@ export const useGameStore = create<AppState>((set, get) => ({
   history: [],
 
   connect: (roomId: string, username: string, forceRole?: string) => {
-    // Connect to deployed API URL if available, otherwise fallback to localhost for development
-    const SERVER_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-    const socket = io(SERVER_URL, { autoConnect: false });
+    const socket = io(API_URL, { autoConnect: false });
     socket.connect();
 
     socket.on('connect', () => {
