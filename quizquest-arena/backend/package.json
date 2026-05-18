@@ -1,8 +1,10 @@
 {
   "name": "quizquest-backend",
   "version": "1.0.0",
+  "main": "dist/server.js",
   "scripts": {
     "start": "ts-node src/server.ts",
+    "build": "tsc",
     "dev": "nodemon src/server.ts"
   },
   "dependencies": {
@@ -15,9 +17,9 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
-    "@types/node": "^20.19.41",
+    "@types/node": "^20.12.7",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.4.5"
   }
 }
