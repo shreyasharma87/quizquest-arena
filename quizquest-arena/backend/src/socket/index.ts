@@ -12,6 +12,34 @@ export function setupSockets(io: Server) {
     const isHost = (roomId: string) => rooms[roomId] && rooms[roomId].hostId === socket.id;
 
     socket.on('joinRoom', ({ roomId, username, forceRole }) => {
+      // Prevent duplicate usernames inside the same room (case-insensitive)
+      if (rooms[roomId] && rooms[roomId].players) {
+        const isTaken = Object.values(rooms[roomId].players).some(
+          p => p.username.toLowerCase() === username.toLowerCase() && p.id !== socket.id
+        );
+        if (isTaken) {
+          let suggestedUsername = username;
+          let suffix = 42;
+          while (true) {
+            const candidate = `${username}_${suffix}`;
+            const taken = Object.values(rooms[roomId].players).some(
+              p => p.username.toLowerCase() === candidate.toLowerCase()
+            );
+            if (!taken) {
+              suggestedUsername = candidate;
+              break;
+            }
+            suffix = Math.floor(Math.random() * 90) + 10;
+          }
+
+          socket.emit('joinError', {
+            message: 'Username already taken in this room',
+            suggestedUsername
+          });
+          return;
+        }
+      }
+
       socket.join(roomId);
       
       if (!rooms[roomId]) {
