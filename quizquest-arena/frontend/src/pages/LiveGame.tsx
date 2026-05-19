@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '../store/gameStore';
 import { Heart, Coins, Flame, ShieldAlert, AlertTriangle, Shield, Snowflake, Bomb, Magnet, Zap, Check, MessageSquare, Send } from 'lucide-react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { PowerupType } from '../../../shared/types';
 
@@ -13,7 +13,8 @@ const MEMORY_COLORS = [
 ];
 
 export default function LiveGame() {
-  const { room, me, timer, submitAnswer, reportSuspicious, cheatWarning, clearWarning, toggleReady, sendChatMessage } = useGameStore();
+  const { roomId } = useParams<{ roomId: string }>();
+  const { room, me, timer, submitAnswer, reportSuspicious, cheatWarning, clearWarning, toggleReady, sendChatMessage, joinError, connect, disconnect } = useGameStore();
 
   const [textAnswer, setTextAnswer] = useState('');
   const [clickScore, setClickScore] = useState(0);
@@ -193,6 +194,60 @@ export default function LiveGame() {
     window.addEventListener('blur', handleBlur);
     return () => window.removeEventListener('blur', handleBlur);
   }, [room?.settings.antiCheatEnabled, room?.gameState.status, reportSuspicious]);
+
+  if (joinError) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-6 relative overflow-hidden">
+        {/* Floating esports neon background blobs */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-danger/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+        
+        <motion.div 
+          initial={{ scale: 0.95, opacity: 0 }} 
+          animate={{ scale: 1, opacity: 1 }} 
+          className="bg-paper border border-white/10 p-10 rounded-3xl max-w-lg w-full text-center shadow-[0_0_50px_rgba(0,0,0,0.5)] relative z-10 backdrop-blur-xl"
+        >
+          <div className="w-20 h-20 bg-danger/10 border-2 border-danger text-danger rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(255,65,54,0.3)]">
+            <ShieldAlert className="w-10 h-10 animate-pulse" />
+          </div>
+          
+          <h2 className="text-3xl font-black text-white mb-2 uppercase tracking-wider font-display">Name Conflict</h2>
+          <p className="text-danger font-mono text-sm uppercase tracking-widest mb-6">{joinError.message}</p>
+          
+          <div className="bg-background/50 border border-white/5 rounded-2xl p-6 mb-8 text-left">
+            <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">Suggested Username</span>
+            <div className="flex items-center justify-between bg-paper px-4 py-3 rounded-xl border border-white/10">
+              <span className="font-mono text-xl font-black text-primary">{joinError.suggestedUsername}</span>
+              <span className="text-xs bg-primary/20 text-primary border border-primary/30 px-2.5 py-1 rounded-lg font-bold uppercase tracking-widest">Recommended</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <button 
+              onClick={() => {
+                if (roomId) {
+                  connect(roomId, joinError.suggestedUsername);
+                }
+              }}
+              className="w-full py-4 bg-primary text-background font-black rounded-xl hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(102,252,241,0.3)] flex justify-center items-center gap-2 text-lg uppercase tracking-wider"
+            >
+              Use Suggested Name
+            </button>
+            
+            <button 
+              onClick={() => {
+                disconnect();
+                window.location.href = '/dashboard';
+              }}
+              className="w-full py-4 bg-background border border-white/10 hover:bg-white/5 text-accent font-bold rounded-xl transition-all text-sm uppercase tracking-wider"
+            >
+              Return to Dashboard
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
 
   if (!room || !me) return <Navigate to="/" />;
   const { gameState, questions, settings } = room;

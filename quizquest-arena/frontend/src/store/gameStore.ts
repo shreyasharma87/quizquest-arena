@@ -12,6 +12,8 @@ interface AppState {
   timer: number;
   cheatWarning: string | null;
   history: MatchRecord[];
+  joinError: { message: string; suggestedUsername: string } | null;
+  clearJoinError: () => void;
   connect: (roomId: string, username: string, forceRole?: string) => void;
   disconnect: () => void;
   startGame: () => void;
@@ -44,13 +46,29 @@ export const useGameStore = create<AppState>((set, get) => ({
   cheatWarning: null,
   history: [],
 
+  joinError: null,
+  clearJoinError: () => set({ joinError: null }),
+
   connect: (roomId: string, username: string, forceRole?: string) => {
+    set({ joinError: null });
     const socket = io(API_URL, { autoConnect: false });
     socket.connect();
 
     socket.on('connect', () => {
       set({ connected: true, roomId, socket });
       socket.emit('joinRoom', { roomId, username, forceRole });
+    });
+
+    socket.on('joinError', ({ message, suggestedUsername }) => {
+      socket.disconnect();
+      set({
+        connected: false,
+        socket: null,
+        roomId: null,
+        me: null,
+        room: null,
+        joinError: { message, suggestedUsername }
+      });
     });
 
     socket.on('roomState', (room: Room) => {
@@ -84,7 +102,7 @@ export const useGameStore = create<AppState>((set, get) => ({
   disconnect: () => {
     const { socket } = get();
     if (socket) socket.disconnect();
-    set({ socket: null, roomId: null, me: null, room: null, connected: false });
+    set({ socket: null, roomId: null, me: null, room: null, connected: false, joinError: null });
   },
 
   startGame: () => get().socket?.emit('startGame', get().roomId),
